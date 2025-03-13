@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Information</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+input {
+    padding: 10px;
+    width: 300px;
+    margin: 20px;
+    margin-right: 200px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    display: block;
+    margin: 20px auto;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: block;
+    margin: 0 auto;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#city-info {
+    margin-top: 50px;
+    padding: 20px;
+   
+    border-radius: 10px;
+   margin-left: 100px;
+    display: inline-block;
+    text-align: left;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+}
+
+h2 {
+    color: #333;
+}
+
+p {
+    font-size: 16px;
+    color: #555;
+}
+
+    </style>
+</head>
+<body>
+    <input type="text" id="city" placeholder="enter your city">
+    <button onclick="getCityInfo()">Get info</button>
+    <div id="city-info"></div>
+    <script>
+        const cityInfo = {
+            pune:{
+                image:"https://th.bing.com/th/id/OIP.48KXxoOz6M1gsEZxaBKCDwHaE8?w=278&h=185&c=7&r=0&o=5&dpr=1.5&pid=1.7",
+                name:"pune",
+                State:"maharashtra",
+                Country:"india",
+                info:"Pune, city, west-central Maharashtra state, western India, at the junction of the Mula and Mutha rivers. Called “Queen of the Deccan,” Pune is the cultural capital of the Maratha peoples. The city first gained importance as the capital of the Bhonsle Marathas in the 17th century. It was temporarily captured by the Mughals but again served as the official Maratha capital from 1714 until its fall to the British in 1817. It was the seasonal capital of the Bombay Presidency and is now a popular tourist resort, offering cool weather, historic and religious monuments, museums, parks, hotels, and cultural attractions."
+            },
+            mumbai:{
+                image:"https://images.lifestyleasia.com/wp-content/uploads/sites/6/2023/02/17135842/things-to-do-in-mumbai-travel-guide-india-destinations-attractions-to-visit-1150x900.jpg",
+                name:"mumbai",
+                State:"maharashtra",
+                Country:"india",
+                info:"Mumbai , also known as Bombay (/bɒmˈbeɪ/ bom-BAY; its official name until 1995), is the capital city of the Indian state of Maharashtra. Mumbai is the financial capital and the most populous city proper of India with an estimated population of 12.5 million (1.25 crore)."
+            },
+            delhi:{
+                image:"https://th.bing.com/th/id/OIP.B7OU6_FK0BuILQhGfQ0NTwHaE5?w=256&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7",
+                name:"delhi",
+                State:"delhi",
+                Country:"india",
+                info:"Delhi's urban agglomeration, which includes the satellite cities Ghaziabad, Faridabad, Gurgaon, Noida, Greater Noida and YEIDA city located in an area known as the National Capital Region (NCR), has an estimated population of over 28 million, making it the largest metropolitan area in India and the second-largest in the world (after Tokyo).[21] Delhi ranks fifth among the Indian states and union territories in human development index,[22] and has the second-highest GDP per capita in India (after Goa).[10] Although a union territory, the political administration of the NCT of Delhi today more closely resembles that of a state of India, with its own legislature, high court and an executive council of ministers headed by a chief minister."
+            },
+            bangalore:{
+                image:"https://th.bing.com/th/id/OIP.1_X2VZE8s8OlDdrJ17-lAgHaEn?w=292&h=182&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+                name:"bangalore",
+                State:"karnataka",
+                Country:"india",
+                info:"Bangalore, officially known as Bengaluru, is the capital city of Karnataka state in India. It’s a big, diverse city and a key center for India’s IT industry. It’s called the “Silicon Valley of India”. Bangalore is not a state but a city within Karnataka."
+            }
+
+        };
+        function getCityInfo(){
+            const cityName=document.getElementById("city").value.toLowerCase();
+           const cityDetails = cityInfo[cityName]
+            if(!cityDetails){
+                alert("city not found")
+                return
+            }
+            const cityinfoDiv=document.getElementById("city-info");
+            cityinfoDiv.innerHTML=`
+            <img src="${cityDetails.image}" alt="${cityDetails.name}"/>
+            <h2>${cityDetails.name}</h2>
+            <p>state:${cityDetails.State}</p>
+            <p>country:${cityDetails.Country}
+             <p>info:${cityDetails.info}`;
+        }
+    </script>
+</body>
+</html>
